@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package javafxappescolar.controlador;
 
 import java.net.URL;
@@ -18,6 +14,8 @@ import javafx.scene.control.TextField;
 import javafxappescolar.modelo.ConexionBD;
 import javafxappescolar.modelo.dao.InicioSesionDAO;
 import javafxappescolar.modelo.pojo.Usuario;
+
+import static javafxappescolar.modelo.dao.InicioSesionDAO.verificarCredenciales;
 
 /**
  * FXML Controller class
@@ -77,10 +75,9 @@ public class FXMLinicioSesionController implements Initializable {
 
     private boolean validarCredenciales(String username, String password) {
         //TODO flujo normal y alterno 1
-        InicioSesionDAO inicioSesionDAO = new InicioSesionDAO();
 
         try{
-            Usuario usuario = inicioSesionDAO.verificarCredenciales(tfUsuario.getText(), tfPassword.getText());
+            Usuario usuario = verificarCredenciales(tfUsuario.getText(), tfPassword.getText());
 
             if(usuario != null){
                 System.out.println("Usuario encontrado");

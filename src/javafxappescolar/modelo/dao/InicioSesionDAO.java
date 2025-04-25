@@ -18,7 +18,7 @@ import javafxappescolar.modelo.pojo.Usuario;
  */
 public class InicioSesionDAO {
     
-    public Usuario verificarCredenciales(String username, String password) throws SQLException {
+    public static Usuario verificarCredenciales(String username, String password) throws SQLException {
         Usuario usuarioSesion = null;
         
         Connection conexionBD = ConexionBD.abrirConexion();
@@ -41,7 +41,7 @@ public class InicioSesionDAO {
             }
 
         } else {
-            System.err.println("Error al conectar con la base de datos");
+            throw new SQLException("Error: Sin conexion a la base de datos");
         }
         
         return usuarioSesion;
